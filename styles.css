@@ -1,0 +1,695 @@
+html {
+  scroll-behavior: smooth;
+
+}
+
+body {
+  overflow: scroll;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+
+  background-image: url('/assets/images/fondo.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/*
+* Fonts
+*/
+
+@font-face {
+  font-family: "BeautyAthena";
+  src: url('./assets/font/BeautyAthena-XpYa.otf');
+}
+
+@font-face {
+  font-family: "Palace-Script-MT-Font";
+  src: url('./assets/font/Palace\ script.ttf');
+}
+
+@font-face {
+  font-family: "Westwood-Studio";
+  src: url('./assets/font/Westwood\ Studio.ttf');
+}
+
+.linear-gradient-yellow{
+  background: linear-gradient(90deg, rgba(243,232,171,1) 0%, rgba(196,143,56,1) 46%, rgba(216,172,73,1) 100%) !important;
+}
+
+.letter-wine{
+  color: #580A22;
+  font-weight: 700;
+}
+
+.border-white{
+  border: var(--bs-border-width) var(--bs-border-style) #ffffff !important;
+}
+
+.border-white-shadow{
+  border: var(--bs-border-width) var(--bs-border-style) #ffffff !important;
+  padding: 1rem !important;
+  margin-bottom: 3rem !important;
+  box-shadow: 0 .5rem 1rem rgb(255 255 255 / 96%) !important;
+}
+
+.border-gold-shadow{
+  border: var(--bs-border-width) var(--bs-border-style) #f0e2a44d  !important;
+  padding: 1rem !important;
+  margin-bottom: 3rem !important;
+  box-shadow: 0 .5rem 1rem #f0e2a4 !important;
+}
+
+
+.btn-slide {
+  background-color: #8B0000;
+  color: white;
+  padding: 15px 30px;
+  font-size: 18px;
+  border: 2px solid gold; 
+  border-radius: 50px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-slide span {
+  margin: 0 15px;
+}
+
+.btn-slide::before {
+  content: '↑';
+  font-size: 24px;
+  color: gold;
+  position: absolute;
+  left: 15px;
+}
+
+.btn-slide::after {
+  content: '↓';
+  font-size: 24px;
+  color: gold;
+  position: absolute;
+  right: 15px;
+}
+
+
+@media (min-width: 1920px) and (max-width: 3840px) {
+
+  .padding-top{ 
+    padding-top:38vh
+  }
+  
+  .title-one{  
+    font-size: 8rem;
+    font-family: BeautyAthena;
+    font-weight: 500;
+    color: #F3EA89;
+  }
+  
+  .title-two{
+    color: #ffffff;
+    font-family: "Courgette", cursive;
+    font-size: 5rem;
+  }
+
+  .subtitle{
+    font-family: auto;
+    font-size: 6rem;
+    color: #ffff;
+  }
+
+  .subtitle-secondary{
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+    font-size: 3rem;
+  }
+
+  .subtitle-tertiary{
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+    font-size: 2rem;
+  }
+
+  .text-two{
+    color: #ffffff;
+    font-size: 3.8rem;
+    font-family: "Courgette", cursive
+  }
+
+  .text-one{  
+    font-size: 2.8rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }
+
+  .text-three{
+    color: #ffff;
+    font-size: 1.8rem;
+    font-family: auto;
+  }
+
+  .numbers-date{  
+    font-size: 5.1rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }
+
+  .format-numbers-date{  
+    font-size: 2.4rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }
+
+}
+
+@media (min-width: 1366px) and (max-width: 1919px){
+
+  .padding-top{ 
+    padding-top:35vh
+  }
+  
+  .title-one{  
+    font-size: 7rem;
+    font-family: BeautyAthena;
+    font-weight: 500;
+    color: #F3EA89;
+  }
+  
+  .title-two{
+    color: #ffffff;
+    font-family: "Courgette", cursive;
+    font-size: 4rem;
+  }
+
+  .subtitle{
+    font-family: auto;
+    font-size: 5rem;
+    color: #ffff;
+  }
+
+  .subtitle-secondary{
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+    font-size: 2.8rem;
+  }
+
+  .subtitle-tertiary{
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+    font-size: 2rem;
+  }
+
+  .text-one{  
+    font-size: 2.1rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }
+
+  .text-two{
+    color: #ffffff;
+    font-size: 2.7rem;
+    font-family: "Courgette", cursive
+  }
+
+  .text-three{
+    color: #ffff;
+    font-size: 1.5rem;
+    font-family: auto;
+  }
+
+  .numbers-date{  
+    font-size: 4.5rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }
+
+  .format-numbers-date{  
+    font-size: 2rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }  
+
+}
+
+@media (min-width: 1280px) and (max-width: 1365px){
+
+  .padding-top{ 
+    padding-top:35vh
+  }
+  
+  .title-one{  
+    font-size: 6rem;
+    font-family: BeautyAthena;
+    font-weight: 500;
+    color: #F3EA89;
+  }
+  
+  .title-two{
+    color: #ffffff;
+    font-family: "Courgette", cursive;
+    font-size: 3rem;
+  }
+
+  .subtitle{
+    font-family: auto;
+    font-size: 5rem;
+    color: #ffff;
+  }
+
+  .subtitle-secondary{
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+    font-size: 2.5rem;
+  }
+
+  .subtitle-tertiary{
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+    font-size: 1.8rem;
+  }
+
+  .text-one{  
+    font-size: 2.1rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }
+
+  .text-two{
+    color: #ffffff;
+    font-size: 2.6rem;
+    font-family: "Courgette", cursive
+  }
+
+  .text-three{
+    color: #ffff;
+    font-size: 1.4rem;
+    font-family: auto;
+  }
+
+  .numbers-date{  
+    font-size: 4.4rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }
+
+  .format-numbers-date{  
+    font-size: 2rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+
+  .padding-top{ 
+    padding-top:35vh
+  }
+  
+  .title-one{  
+    font-size: 5rem;
+    font-family: BeautyAthena;
+    font-weight: 500;
+    color: #F3EA89;
+  }
+  
+  .title-two{
+    color: #ffffff;
+    font-family: "Courgette", cursive;
+    font-size: 2rem;
+  }
+
+  .subtitle{
+    font-family: auto;
+    font-size: 5rem;
+    color: #ffff;
+  }
+
+  .subtitle-secondary{
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+    font-size: 2.5rem;
+  }
+
+  .subtitle-tertiary{
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+    font-size: 1.8rem;
+  }
+
+  .text-one{  
+    font-size: 1.5rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }
+
+  .text-two{
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-family: "Courgette", cursive
+  }
+
+  .text-three{
+    color: #ffff;
+    font-size: 1.5rem;
+    font-family: auto;
+  }
+
+  .numbers-date{  
+    font-size: 4.4rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }
+
+  .format-numbers-date{  
+    font-size: 2rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 1023px) {
+
+  .padding-top{ 
+    padding-top:12vh
+  }
+  
+  .title-one{  
+    font-size: 4rem;
+    font-family: BeautyAthena;
+    font-weight: 500;
+    color: #F3EA89;
+  }
+  
+  .title-two{
+    color: #ffffff;
+    font-family: "Courgette", cursive;
+    font-size: 2rem;
+  }
+
+  .subtitle{
+    font-family: auto;
+    font-size: 4.5rem;
+    color: #ffff;
+  }
+
+  .subtitle-secondary{
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+    font-size: 2.5rem;
+  }
+
+  .subtitle-tertiary{
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+    font-size: 1.7rem;
+  }
+
+  .text-one{  
+    font-size: 1.5rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }
+
+  .text-two{
+    color: #ffffff;
+    font-size: 2.2rem;
+    font-family: "Courgette", cursive
+  }
+
+  .text-three{
+    color: #ffff;
+    font-size: 1.4rem;
+    font-family: auto;
+  }
+
+  .numbers-date{  
+    font-size: 3.3rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }
+
+  .format-numbers-date{  
+    font-size: 1.5rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }
+
+}
+
+@media (min-width: 300px) and (max-width: 499px) {
+
+  .padding-top{ 
+    padding-top:5vh
+  }
+  
+  .title-one{  
+    font-size: 2.5rem;
+    font-family: BeautyAthena;
+    font-weight: 500;
+    color: #F3EA89;
+  }
+  
+  .title-two{
+    color: #ffffff;
+    font-family: "Courgette", cursive;
+    font-size: 1.5rem;
+  }
+
+  .subtitle{
+    font-family: auto;
+    font-size: 3rem;
+    color: #ffff;
+  }
+
+  .subtitle-secondary{
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+    font-size: 1.8rem;
+  }
+
+  .subtitle-tertiary{
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+    font-size: 1.2rem;
+  }
+
+  .text-one{  
+    font-size: 1rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }
+
+  .text-two{
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-family: "Courgette", cursive
+  }
+
+  .text-three{
+    color: #ffff;
+    font-size: 1.1rem;
+    font-family: auto;
+  }
+
+  .numbers-date{  
+    font-size: 2rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }
+
+  .format-numbers-date{  
+    font-size: 0.8rem;
+    font-family: "Courgette", cursive;
+    color: #F3EA89;
+  }
+
+
+  .btn-slide {
+    padding: 15px 30px;
+    font-size: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Sección 8*/
+
+.padding-confirm{ 
+  padding-top:15vh
+}
+
+.text-confirm{
+  font-family: "Courgette", cursive;
+  color: #F3EA89;
+  font-size: 2.4rem;
+}
+
+/*
+* Boton de musica
+*/
+
+.music-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 40px;
+  background-color: #b22222;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  animation: changeBackground 3s infinite alternate;
+}
+
+.music-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  background-color: #b22222;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  animation: changeBackground 3s infinite alternate;
+  margin-left: auto; 
+}
+
+.bar {
+  width: 5px;
+  height: 25px;
+  background-color: #ffd700;
+  margin: 0 2px;
+  display: inline-block;
+  animation: bounce 1s infinite ease-in-out, changeBarColor 2s infinite alternate; /* Animate bar height and color */
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(2.5);
+  }
+}
+
+@keyframes changeBackground {
+  0% {
+    background-color: #b22222;
+  }
+  100% {
+    background-color: #ffd700;
+  }
+}
+
+@keyframes changeBarColor {
+  0% {
+    background-color: #ffd700;
+  }
+  100% {
+    background-color: #800000;
+  }
+}
+
+.bar1 {
+  animation-delay: -0.4s;
+}
+
+.bar2 {
+  animation-delay: -0.3s;
+}
+
+.bar3 {
+  animation-delay: -0.2s;
+}
+
+.bar4 {
+  animation-delay: -0.1s;
+}
+
+.bar5 {
+  animation-delay: 0s;
+}
+
+.music-button:hover {
+  background-color: #b22222; /* Rojo vino */
+}
+
+.music-button:active {
+  background-color: #800000; /* Rojo vino más oscuro */
+}
+
+.icon {
+  position: absolute;
+  font-size: 25px;
+  color: white;
+}
+
+.play-icon {
+  display: none;
+}
+
+.pause-icon {
+  display: none;
+}
+
+.music-button.playing .play-icon {
+  display: block;
+}
+
+.music-button.paused .pause-icon {
+  display: block;
+}
+
+.music-button.paused .bar {
+  animation: none; /* Stop bar animations */
+  background-color: #800000; /* Rojo vino oscuro */
+}
