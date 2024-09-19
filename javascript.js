@@ -69,7 +69,8 @@ function countDown() {
 var canvasElement = document.getElementById('canvas');
 var canvas = new fabric.Canvas('canvas');
 
-function resizeCanvas() {    
+
+function resizeCanvas() {
 
     var windowWidth = (window.innerWidth - (window.innerWidth * 0.25));
     var windowHeight = (window.innerHeight - (window.innerHeight * 0.33));
@@ -78,7 +79,7 @@ function resizeCanvas() {
     canvasElement.height = windowHeight;
 
     canvas.setWidth(windowWidth);
-    canvas.setHeight(windowHeight);
+    canvas.setHeight(windowHeight);    
 
     canvas.renderAll();
 }
@@ -90,87 +91,105 @@ function clearCollage() {
 function addCollage(){
 
     var windowWidth = window.innerWidth;
-    var windowHeight = window.innerHeight;
 
-    let image1 = { scale:0, left: 0, top: 0, angle:0 }
-    let image2 = { scale:0, left: 0, top: 0, angle:0 }
-    let image3 = { scale:0, left: 0, top: 0, angle:0 }
-    let image4 = { scale:0, left: 0, top: 0, angle:0 }
-    let image5 = { scale:0, left: 0, top: 0, angle:0 }
-    let image6 = { scale:0, left: 0, top: 0, angle:0 }
-    let image7 = { scale:0, left: 0, top: 0, angle:0 }
-    let image8 = { scale:0, left: 0, top: 0, angle:0 }
-    let image9 = { scale:0, left: 0, top: 0, angle:0 }
-    let image10 = { scale:0, left: 0, top: 0, angle:0 }
-    let image11 = { scale:0, left: 0, top: 0, angle:0 }
-    let image12 = { scale:0, left: 0, top: 0, angle:0 }
-    let image13 = { scale:0, left: 0, top: 0, angle:0 }
-    let image14 = { scale:0, left: 0, top: 0, angle:0 }
+    let images = Array(14).fill().map(() => ({ scale: 0, left: 0, top: 0, angle: 0 }));
 
-    if (windowWidth > 1366) {        
-        image1 = { scale:0.33, left: -14.95, top: 168.74, angle:25.00 }
-        image2 = { scale:0.84, left: 1277.71, top: 204.40, angle:28.51 }
-        image3 = { scale:1.16, left: 584.51, top: 50.02, angle:0 }
-        image4 = { scale:0.30, left: 1133.09, top: 105.99, angle:314.16 }
-        image5 = { scale:0.44, left: 859.76, top: -105.08, angle:0 }
-        image6 = { scale:0.41, left: -125.98, top: 66.60, angle:329 }
-        image7 = { scale:0.52, left: 514.02, top: 536.87, angle:0 }
-        image8 = { scale:1.47, left: 112.98, top: 554.26, angle:338.35 }
-        image9 = { scale:0.52, left: -19.86, top: 450.98, angle:41.54 }
-        image10 = { scale:0.48, left: 1233.44, top: 559.96, angle:0 }
-        image11 = { scale:0.35, left: 1075.10, top: 68.95, angle:47.85 }
-        image12 = { scale:0.59, left: 220.88, top: 235.42, angle:0 }
-        image13 = { scale:0.38, left: 258.41, top: 266.68, angle:273.85 }
-        image14 = { scale:0.28, left: 897.59, top: 535.67, angle:345.33 }
+    const largeLargeScreenConfig = [
+        { scale: 0.33, left: -14.95, top: 168.74, angle: 25.00 },
+        { scale: 0.84, left: 1277.71, top: 204.40, angle: 28.51 },
+        { scale: 1.16, left: 584.51, top: 50.02, angle: 0 },
+        { scale: 0.30, left: 1133.09, top: 105.99, angle: 314.16 },
+        { scale: 0.44, left: 859.76, top: -105.08, angle: 0 },
+        { scale: 0.41, left: -125.98, top: 66.60, angle: 329 },
+        { scale: 0.52, left: 514.02, top: 536.87, angle: 0 },
+        { scale: 1.47, left: 112.98, top: 554.26, angle: 338.35 },
+        { scale: 0.52, left: -19.86, top: 450.98, angle: 41.54 },
+        { scale: 0.48, left: 1233.44, top: 559.96, angle: 0 },
+        { scale: 0.35, left: 1075.10, top: 68.95, angle: 47.85 },
+        { scale: 0.59, left: 220.88, top: 235.42, angle: 0 },
+        { scale: 0.38, left: 258.41, top: 266.68, angle: 273.85 },
+        { scale: 0.28, left: 897.59, top: 535.67, angle: 345.33 }
+    ];
+
+    const largeScreenConfig = [
+        { scale: 0.19, left: 12.65, top: 100.92, angle: 25 },
+        { scale: 0.54, left: 254.55, top: -66.26, angle: 28.51 },
+        { scale: 1, left: 392.81, top: 29.97, angle: 0 },
+        { scale: 0.30, left: 683.18, top: 321.83, angle: 314.16 },
+        { scale: 0.29, left: 921.25, top: -96.82, angle: 37.97 },
+        { scale: 0.32, left: -112.92, top: 44.76, angle: 329 },
+        { scale: 0.45, left: 208.58, top: 337.04, angle: 11.99 },
+        { scale: 1, left: 182.91, top: 219.77, angle: 338.35},
+        { scale: 0.32, left: 662.56, top: 137.77, angle: 41.54 },
+        { scale: 0.49, left: 679.22, top: 316.00, angle: 41.28 },
+        { scale: 0.17, left: 252.78, top: 6.59, angle: 47.85 },
+        { scale: 0.41, left: -21.05, top: 270.02, angle: 0 },
+        { scale: 0.24, left: 805.55, top: 532.24, angle: 273.85 },
+        { scale: 0.20, left: 619.81, top: 24.48, angle: 345.33 }
+    ];
     
-    }
+    const mediumScreenConfig = [
+        { scale: 0.27, left: -11.22, top: 44.46, angle: 25.00 },
+        { scale: 0.60, left: -32.30, top: 307.18, angle: 0 },
+        { scale: 0.87, left: 366.29, top: -15.44, angle: 0 },
+        { scale: 0.22, left: 590.82, top: -11.69, angle: 0 },
+        { scale: 0.20, left: 558.71, top: 236.32, angle: 342.10 },
+        { scale: 0.26, left: 236.17, top: 63.65, angle: 151.45 },
+        { scale: 0.32, left: 341.84, top: 367.85, angle: 0 },
+        { scale: 0.94, left: 153.81, top: -21.38, angle: 0 },
+        { scale: 0.30, left: 763.09, top: 177.48, angle: 0 },
+        { scale: 0.35, left: 577.36, top: 348.84, angle: 0 },
+        { scale: 0.19, left: 359.17, top: 100.31, angle: 59.30 },
+        { scale: 0.36, left: 148.12, top: 386.65, angle: 335.86 },
+        { scale: 0.26, left: 829.81, top: 596.09, angle: 245.52 },
+        { scale: 0.19, left: 761.74, top: -3.54, angle: 0 }
+    ];
     
-    if (1366 >= windowWidth  && windowWidth >= 1280) {        
-        image1 = { scale:0.27, left: -11.22, top: 44.46, angle:25.00 }
-        image2 = { scale:0.60, left: -32.30, top: 307.18, angle:0 }
-        image3 = { scale:0.87, left: 366.29, top: -15.44, angle:0 }
-        image4 = { scale:0.22, left: 590.82, top: -11.69, angle:0 }
-        image5 = { scale:0.20, left: 558.71, top: 236.32, angle:342.10 }
-        image6 = { scale:0.26, left: 236.17, top: 63.65, angle:151.45 }
-        image7 = { scale:0.32, left: 341.84, top: 367.85, angle:0 }
-        image8 = { scale:0.94, left: 153.81, top: -21.38, angle:0 }
-        image9 = { scale:0.30, left: 763.09, top: 177.48, angle:0 }
-        image10 = { scale:0.35, left: 577.36, top: 348.84, angle:0 }
-        image11 = { scale:0.19, left: 359.17, top: 100.31, angle:59.30 }
-        image12 = { scale:0.36, left: 148.12, top: 386.65, angle:335.86 }
-        image13 = { scale:0.26, left: 829.81, top: 596.09, angle:245.52 }
-        image14 = { scale:0.19, left: 761.74, top: -3.54, angle:0 }    
-    }
+    const smallScreenConfig = [
+        { scale: 0.22, left: 1.78, top: 175.96, angle: 37.52 },
+        { scale: 0.41, left: 265.55, top: 379.56, angle: 35.81 },
+        { scale: 0.75, left: 67.95, top: 145.79, angle: 0 },
+        { scale: 0.12, left: 203.59, top: 275.01, angle: 269.63 },
+        { scale: 0.32, left: 237.83, top: -98.43, angle: 0 },
+        { scale: 0.28, left: 152.83, top: -0.50, angle: 133.70 },
+        { scale: 0.20, left: 73.28, top: 473.20, angle: 0 },
+        { scale: 0.72, left: -31.98, top: 400.45, angle: 0 },
+        { scale: 0.23, left: -58.28, top: 117.69, angle: 341.93 },
+        { scale: 0, left: 0, top: 0, angle: 0 },
+        { scale: 0.24, left: 252.24, top: 667.02, angle: 123.74 },
+        { scale: 0.30, left: 143.31, top: 575.62, angle: 329.14 },
+        { scale: 0.18, left: 218.09, top: 454.04, angle: 252.39 },
+        { scale: 0.16, left: 75.99, top: -9.33, angle: 0 }
+    ];
 
-    if (windowWidth <= 500) {        
+    if (windowWidth >= 1920) {
+        
+        images = largeLargeScreenConfig;
 
-        image1 = { scale:0.22, left: 1.78, top: 175.96, angle:37.52 }
-        image2 = { scale:0.41, left: 265.55, top: 379.56, angle:35.81 }
-        image3 = { scale:0.75, left: 67.95, top: 145.79, angle:0 }
-        image4 = { scale:0.12, left: 203.59, top: 275.01, angle:269.63 }
-        image5 = { scale:0.32, left: 237.83, top: -98.43, angle:0 }
-        image6 = { scale:0.28, left: 152.83, top: -0.50, angle:133.70 }
-        image7 = { scale:0.20, left: 73.28, top: 473.20, angle:0 }
-        image8 = { scale:0.72, left: -31.98, top: 400.45, angle:0 }
-        image9 = { scale:0.23, left: -58.28, top: 117.69, angle:341.93 }
-        image10 = { scale:0, left: 0, top: 0, angle:0 }
-        image11 = { scale:0.24, left: 252.24, top: 667.02, angle:123.74 }
-        image12 = { scale:0.30, left: 143.31, top: 575.62, angle:329.14 }
-        image13 = { scale:0.18, left: 218.09, top: 454.04, angle:252.39 }
-        image14 = { scale:0.16, left: 75.99, top: -9.33, angle:0 }
+    } else if( windowWidth >= 1366 ){
+
+        images = largeScreenConfig;
+
+    } else if (windowWidth >= 1280) {
+        
+        images = mediumScreenConfig;
+
+    } else if (windowWidth <= 500) {
+
+        images = smallScreenConfig;
     }
 
     fabric.Image.fromURL('./assets/images/collage/12.jpeg', function(img) {
 
-        img.scale(image12.scale);
+        img.scale(images[11].scale);
 
         img.set({
             width:img.width,
             height:img.height,
-            left: image12.left,
-            top: image12.top,
-            angle: image12.angle,
-            selectable: false,
+            left: images[11].left,
+            top: images[11].top,
+            angle: images[11].angle,
+            selectable: true,
             stroke: 'white',
             strokeWidth: 10
         });
@@ -192,15 +211,15 @@ function addCollage(){
 
     fabric.Image.fromURL('./assets/images/collage/11.jpeg', function(img) {
 
-        img.scale(image11.scale);
+        img.scale(images[10].scale);
 
         img.set({
             width:img.width,
             height:img.height,
-            left: image11.left,
-            top: image11.top,
-            angle: image11.angle,
-            selectable: false,
+            left: images[10].left,
+            top: images[10].top,
+            angle: images[10].angle,
+            selectable: true,
             stroke: 'white',
             strokeWidth: 10
         });
@@ -222,15 +241,15 @@ function addCollage(){
 
     fabric.Image.fromURL('./assets/images/collage/6.jpeg', function(img) {
 
-        img.scale(image6.scale);
+        img.scale(images[5].scale);
 
         img.set({
             width:img.width,
             height:img.height,
-            left: image6.left,
-            top: image6.top,
-            angle: image6.angle,
-            selectable: false,
+            left: images[5].left,
+            top: images[5].top,
+            angle: images[5].angle,
+            selectable: true,
             opacity: 0,
             stroke: 'white',
             strokeWidth: 10
@@ -253,15 +272,15 @@ function addCollage(){
 
     fabric.Image.fromURL('./assets/images/collage/8.jpeg', function(img) {
 
-        img.scale(image8.scale);
+        img.scale(images[7].scale);
 
         img.set({
             width:img.width,
             height:img.height,
-            left: image8.left,
-            top: image8.top,
-            angle: image8.angle,
-            selectable: false,
+            left: images[7].left,
+            top: images[7].top,
+            angle: images[7].angle,
+            selectable: true,
             stroke: 'white',
             strokeWidth: 10
         });
@@ -283,15 +302,15 @@ function addCollage(){
 
     fabric.Image.fromURL('./assets/images/collage/1.jpeg', function(img) {
 
-        img.scale(image1.scale);
+        img.scale(images[0].scale);
 
         img.set({
             width:img.width,
             height:img.height,
-            left: image1.left,
-            top: image1.top,
+            left: images[0].left,
+            top: images[0].top,
             angle: 25,
-            selectable: false,
+            selectable: true,
             stroke: 'white',
             strokeWidth: 10
         });
@@ -313,15 +332,15 @@ function addCollage(){
 
     fabric.Image.fromURL('./assets/images/collage/2.jpeg', function(img) {
 
-        img.scale(image2.scale);
+        img.scale(images[1].scale);
 
         img.set({
             width:img.width,
             height:img.height,
-            left: image2.left,
-            top: image2.top,
-            angle: image2.angle,
-            selectable: false,
+            left: images[1].left,
+            top: images[1].top,
+            angle: images[1].angle,
+            selectable: true,
             stroke: 'white',
             strokeWidth: 10
         });
@@ -343,15 +362,15 @@ function addCollage(){
     
     fabric.Image.fromURL('./assets/images/collage/4.jpeg', function(img) {
 
-        img.scale(image4.scale);
+        img.scale(images[3].scale);
 
         img.set({
             width:img.width,
             height:img.height,
-            left: image4.left,
-            top: image4.top,
-            angle: image4.angle,
-            selectable: false,
+            left: images[3].left,
+            top: images[3].top,
+            angle: images[3].angle,
+            selectable: true,
             stroke: 'white',
             strokeWidth: 10
         });
@@ -373,15 +392,15 @@ function addCollage(){
 
     fabric.Image.fromURL('./assets/images/collage/5.jpeg', function(img) {
 
-        img.scale(image5.scale);
+        img.scale(images[4].scale);
 
         img.set({
             width:img.width,
             height:img.height,
-            left: image5.left,
-            top: image5.top,
-            angle: image5.angle,
-            selectable: false,
+            left: images[4].left,
+            top: images[4].top,
+            angle: images[4].angle,
+            selectable: true,
             stroke: 'white',
             strokeWidth: 10
         });
@@ -403,15 +422,15 @@ function addCollage(){
 
     fabric.Image.fromURL('./assets/images/collage/7.jpeg', function(img) {
 
-        img.scale(image7.scale);
+        img.scale(images[6].scale);
 
         img.set({
             width:img.width,
             height:img.height,
-            left: image7.left,
-            top: image7.top,
-            angle: image7.angle,
-            selectable: false,
+            left: images[6].left,
+            top: images[6].top,
+            angle: images[6].angle,
+            selectable: true,
             stroke: 'white',
             strokeWidth: 10
         });
@@ -433,15 +452,15 @@ function addCollage(){
 
     fabric.Image.fromURL('./assets/images/collage/9.jpeg', function(img) {
 
-        img.scale(image9.scale);
+        img.scale(images[8].scale);
 
         img.set({
             width:img.width,
             height:img.height,
-            left: image9.left,
-            top: image9.top,
-            angle: image9.angle,
-            selectable: false,
+            left: images[8].left,
+            top: images[8].top,
+            angle: images[8].angle,
+            selectable: true,
             stroke: 'white',
             strokeWidth: 10
         });
@@ -463,15 +482,15 @@ function addCollage(){
 
     fabric.Image.fromURL('./assets/images/collage/10.jpeg', function(img) {
 
-        img.scale(image10.scale);
+        img.scale(images[9].scale);
 
         img.set({
             width:img.width,
             height:img.height,
-            left: image10.left,
-            top: image10.top,
-            angle: image10.angle,
-            selectable: false,
+            left: images[9].left,
+            top: images[9].top,
+            angle: images[9].angle,
+            selectable: true,
             stroke: 'white',
             strokeWidth: 10
         });
@@ -493,15 +512,15 @@ function addCollage(){
 
     fabric.Image.fromURL('./assets/images/collage/13.jpeg', function(img) {
 
-        img.scale(image13.scale);
+        img.scale(images[12].scale);
 
         img.set({
             width:img.width,
             height:img.height,
-            left: image13.left,
-            top: image13.top,
-            angle: image13.angle,
-            selectable: false,
+            left: images[12].left,
+            top: images[12].top,
+            angle: images[12].angle,
+            selectable: true,
             stroke: 'white',
             strokeWidth: 10
         });
@@ -524,15 +543,15 @@ function addCollage(){
     
     fabric.Image.fromURL('./assets/images/collage/14.jpeg', function(img) {
 
-        img.scale(image14.scale);
+        img.scale(images[13].scale);
 
         img.set({
             width:img.width,
             height:img.height,
-            left: image14.left,
-            top: image14.top,
-            angle: image14.angle,
-            selectable: false,
+            left: images[13].left,
+            top: images[13].top,
+            angle: images[13].angle,
+            selectable: true,
             stroke: 'white',
             strokeWidth: 10
         });
@@ -554,15 +573,15 @@ function addCollage(){
 
     fabric.Image.fromURL('./assets/images/collage/3.jpeg', function(img) {
 
-        img.scale(image3.scale);
+        img.scale(images[2].scale);
 
         img.set({
             width:img.width,
             height:img.height,
-            left: image3.left,
-            top: image3.top,
-            angle: image3.angle,
-            selectable: false,
+            left: images[2].left,
+            top: images[2].top,
+            angle: images[2].angle,
+            selectable: true,
             stroke: 'white',
             strokeWidth: 10
         });
@@ -592,9 +611,6 @@ function addCollage(){
     });
     
 }
-
-
-
 
 function openWhatsapp() {
 
@@ -666,7 +682,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const interval = setInterval(countDown, 1000);
     
-    resizeCanvas();
+    resizeCanvas();    
 
     window.addEventListener('resize', resizeCanvas);
 
